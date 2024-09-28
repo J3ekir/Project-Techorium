@@ -1,4 +1,3 @@
-const is22 = !document.documentElement.hasAttribute("data-xf");
 const emojis = [
     {
         src: "https://techolay.net/sosyal/ek/71241",
@@ -264,19 +263,6 @@ waitForElement("html.s_pt_init.s_pte input[data-bb-code='message']").then(elem =
     initEmojiPickers();
 
     waitForVariable("XF.activate").then(_ => {
-        // const setEvent = (elem, event, callback) => is22 ? $(elem).on(event, callback) : XF.on(elem, event, callback);
-        // setEvent(document, "xf:page-load-complete", initEmojiPickers);
-        // setEvent(document, "editor:config", initEmojiPickers);
-        // setEvent(document.querySelector("form[data-xf-init~='quick-reply']"), "ajax-submit:always", initEmojiPickers);
-
-        if (is22) {
-            waitForVariable("$").then(_ => {
-                $(document).on("xf:page-load-complete", initEmojiPickers);
-                $(document).on("editor:config", initEmojiPickers);
-                $("form[data-xf-init~='quick-reply']").on("ajax-submit:always", initEmojiPickers);
-            });
-            return;
-        }
         XF.on(document, "xf:page-load-complete", initEmojiPickers);
         XF.on(document, "editor:config", initEmojiPickers);
         XF.on(document.querySelector("form[data-xf-init~='quick-reply']"), "ajax-submit:always", initEmojiPickers);
@@ -317,9 +303,7 @@ function makeEmojis() {
 }
 
 function handleEmojiClick(event) {
-    const editor = is22
-        ? $(event.currentTarget.parentElement.previousElementSibling)
-        : event.currentTarget.parentElement.previousElementSibling;
+    const editor = event.currentTarget.parentElement.previousElementSibling;
     const url = event.currentTarget.getAttribute("data-url");
     const width = event.currentTarget.style.width;
 
