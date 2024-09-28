@@ -72,7 +72,7 @@ $osbs: (
 }
 
 
-html.s_ptosb {
+html#XF.s_ptosb {
     @include osb();
     @include osb-positions();
 }

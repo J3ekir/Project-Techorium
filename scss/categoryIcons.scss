@@ -79,7 +79,7 @@ $category-icons: (
 }
 
 
-html.s_ptci {
+html#XF.s_ptci {
     .xfa-nit-node-icon > :first-child {
         @include background-settings;
         @include width-height(100%);
