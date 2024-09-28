@@ -1,11 +1,13 @@
 const settingPrefix = "s_";
 
+const logoSelectors = [
+    ".p-header-logo>a[href='/sosyal/']>picture>img",
+    ".p-nav-smallLogo>a[href='/sosyal/']>picture>img"
+];
+
 chrome.storage.local.get().then(settings => {
     if (settings["s_ptl"]) {
-        waitForElements(
-            ".p-header-logo>a[href='/sosyal/']>img",
-            ".p-nav-smallLogo>a[href='/sosyal/']>img",
-        ).then(elems => s_ptl(true));
+        waitForElements(...logoSelectors).then(elems => s_ptl(true));
     }
 
     if (settings["s_ptcc"]) {
@@ -30,25 +32,21 @@ chrome.storage.onChanged.addListener(changes => {
 });
 
 function s_ptl(isEnabled) {
-    const elems = [
-        document.querySelector(".p-header-logo>a[href='/sosyal/']>img"),
-        document.querySelector(".p-nav-smallLogo>a[href='/sosyal/']>img"),
-    ];
+    const s_ptlSelectors = logoSelectors.map(selector => document.querySelector(selector));
 
-    if (!isEnabled) {
-        elems.forEach(elem => {
+    if (isEnabled) {
+        s_ptlSelectors.forEach(elem => {
+            elem.pt_src = elem.src;
+            elem.pt_srcset = elem.srcset;
+            elem.src = elem.srcset = chrome.runtime.getURL("img/dijitalfikir.png");
+        });
+    }
+    else {
+        s_ptlSelectors.forEach(elem => {
             elem.src = elem.pt_src;
             elem.srcset = elem.pt_srcset;
         });
-
-        return;
     }
-
-    elems.forEach(elem => {
-        elem.pt_src = elem.src;
-        elem.pt_srcset = elem.srcset;
-        elem.src = elem.srcset = chrome.runtime.getURL("img/dijitalfikir.png");
-    });
 }
 
 function waitForElement(selector) {
