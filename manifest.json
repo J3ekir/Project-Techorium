@@ -63,6 +63,7 @@
         "storage"
     ],
     "version": "1.49.3",
+    "version_name": "experimental 1.0.0",
     "web_accessible_resources": [
         {
             "matches": [
