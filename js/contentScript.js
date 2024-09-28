@@ -79,5 +79,3 @@ function waitForElements(...selectors) {
         }).observe(document, { childList: true, subtree: true });
     });
 }
-
-
