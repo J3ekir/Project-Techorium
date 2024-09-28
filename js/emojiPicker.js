@@ -335,7 +335,7 @@ function waitForElement(selector) {
                 return resolve(elem);
             }
         })
-            .observe(document, { childList: true, subtree: true });
+            .observe(document, { childList: true, subtree: true, attributes: true });
     });
 }
 
