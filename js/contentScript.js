@@ -29,17 +29,18 @@ chrome.storage.onChanged.addListener(changes => {
     });
 });
 
-function s_ptl(value) {
+function s_ptl(isEnabled) {
     const elems = [
         document.querySelector(".p-header-logo>a[href='/sosyal/']>img"),
         document.querySelector(".p-nav-smallLogo>a[href='/sosyal/']>img"),
     ];
 
-    if (!value) {
+    if (!isEnabled) {
         elems.forEach(elem => {
             elem.src = elem.pt_src;
             elem.srcset = elem.pt_srcset;
         });
+
         return;
     }
 
