@@ -36,7 +36,7 @@
             "css": [
                 "css/styles.css",
                 "css/osb.min.css",
-                "css/categoryIcons.min.css"
+                "css/categoryIconsTemp.min.css"
             ],
             "js": [
                 "js/contentScript.js"
