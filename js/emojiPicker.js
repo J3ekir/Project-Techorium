@@ -304,7 +304,7 @@ function makeEmojis() {
 
 function handleEmojiClick(event) {
     const editor = event.currentTarget.parentElement.previousElementSibling;
-    const url = event.currentTarget.getAttribute("data-url");
+    const url = event.currentTarget.src;
     const width = event.currentTarget.style.width;
 
     XF.insertIntoEditor(
