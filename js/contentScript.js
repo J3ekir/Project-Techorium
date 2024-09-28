@@ -13,7 +13,8 @@ chrome.storage.local.get().then(settings => {
     }
 
     document.documentElement.classList.add(
-        ...Object.keys(settings).filter(key => settings[key] && key.startsWith(settingPrefix))
+        ...Object.keys(settings).filter(key => settings[key] && key.startsWith(settingPrefix)),
+        "s_pt_init",
     );
 });
 

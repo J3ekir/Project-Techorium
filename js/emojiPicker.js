@@ -260,7 +260,7 @@ const emojis = [
     },
 ];
 
-waitForElement("input[data-bb-code='message']").then(elem => {
+waitForElement("html.s_pt_init.s_pte input[data-bb-code='message']").then(elem => {
     initEmojiPickers();
 
     waitForVariable("XF.activate").then(_ => {
