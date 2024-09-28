@@ -89,7 +89,7 @@
 
     function editorChanged(editor, changes) {
         const editorText = editor.getValue();
-        const wrappedEditorText = `html.s_ptcc{${editorText}}`;
+        const wrappedEditorText = `html.s_ptcc{${ editorText }}`;
         const editorTextMin = minifyCSS(wrappedEditorText);
         if (cacheCss === editorTextMin) { return; }
 
